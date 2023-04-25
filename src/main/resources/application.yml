@@ -1,27 +1,27 @@
-bezkoder:
-    app:
-        jwtCookieName: patitas
-        jwtExpirationMs: 86400000
-        jwtSecret: patitasSecretKey
+upc:
+  app:
+    jwtCookieName: patitas
+    jwtExpirationMs: 30000
+    jwtSecret: patitasSecretKey
 logging:
-    level:
-        org:
-            hibernate:
-                type:
-                    descriptor:
-                        sql: trace
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
 spring:
-    datasource:
-        #password: Lima17042023
-        #url: jdbc:sqlserver://localhost:1433;encrypt=true;trustServerCertificate=true;databaseName=DB_PATITAS
-        url: jdbc:sqlserver://mssqlpf18042023.database.windows.net:1433;database=DB_PATITAS;user=upcpf18042023@mssqlpf18042023;password=Peru18042023;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
-        #username: sa
-    jpa:
-        hibernate:
-            ddl-auto: update
-        properties:
-            hibernate:
-                dialect: org.hibernate.dialect.SQLServerDialect
-                format_sql: true  # show SQL pretty
-            show-sql: true # show SQL with Slf4j
-        show-sql: true # show SQL with System.out.println()
+  datasource:
+    #url: jdbc:sqlserver://mssqlpf18042023.database.windows.net:1433;database=DB_PATITAS;user=upcpf18042023@mssqlpf18042023;password=Peru18042023;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+    password: Lima17042023
+    url: jdbc:sqlserver://localhost:1433;encrypt=true;trustServerCertificate=true;databaseName=DB_PATITAS
+    username: sa
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true  # show SQL pretty
+      show-sql: true # show SQL with Slf4j
+    show-sql: true # show SQL with System.out.println()

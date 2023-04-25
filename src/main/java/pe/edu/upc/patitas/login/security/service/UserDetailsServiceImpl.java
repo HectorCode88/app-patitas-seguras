@@ -1,5 +1,6 @@
 package pe.edu.upc.patitas.login.security.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,16 +11,17 @@ import pe.edu.upc.patitas.login.models.User;
 import pe.edu.upc.patitas.login.repository.UserRepository;
 
 @Service
+@RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
-  @Autowired
-  UserRepository userRepository;
+
+  private final UserRepository userRepository;
 
   @Override
   @Transactional
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    User user = userRepository.findByUsername(username)
-      .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
 
-    return UserDetailsImpl.build(user);
+    return userRepository.findByUsername(username)
+      .map(UserDetailsImpl::build)
+      .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
   }
 }
